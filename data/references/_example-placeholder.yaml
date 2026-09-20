@@ -16,3 +16,6 @@ reproduction_note: "（要記入）自分の素材で再現する場合の具体
 rights_note: >
   公式チャンネル/公式配信へのリンクのみを使用すること。埋め込み・GIF化・
   転載は行わない。リンク切れ確認は定期チェック対象とする（design-v0.1 §10）。
+legal_review:
+  status: pending
+  note: 社外顧客向けSaaS化を見据え、公開カタログに含める前に法務承認(approved)が必須。

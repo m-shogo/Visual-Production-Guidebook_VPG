@@ -68,9 +68,54 @@
       }
     },
     "status": {
-      "enum": ["draft", "validated", "published"]
+      "enum": ["draft", "validated", "published"],
+      "description": "draft=未検証, validated=社内・取引先レビュアーのapprove承認あり, published=公開可"
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reviewer_name", "reviewer_org", "date", "verdict"],
+        "properties": {
+          "reviewer_name": { "type": "string" },
+          "reviewer_org": { "type": "string", "description": "社内 or 取引先の会社名・屋号" },
+          "date": { "type": "string", "format": "date" },
+          "verdict": { "enum": ["approve", "request-changes"] },
+          "comment": { "type": "string" }
+        }
+      },
+      "description": "docs/review-workflow.md の外部レビュー記録。statusをvalidated/publishedにするにはapprove verdictが最低1件必要（下記allOfで強制）。"
     },
     "created_at": { "type": "string", "format": "date" },
     "updated_at": { "type": "string", "format": "date" }
-  }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "validated" } }, "required": ["status"] },
+      "then": {
+        "required": ["reviews"],
+        "properties": {
+          "reviews": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "verdict": { "const": "approve" } } },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "published" } }, "required": ["status"] },
+      "then": {
+        "required": ["reviews"],
+        "properties": {
+          "reviews": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "verdict": { "const": "approve" } } },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ]
 }

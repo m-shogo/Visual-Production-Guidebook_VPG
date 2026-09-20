@@ -1,0 +1,17 @@
+{
+  "name": "visual-production-guidebook-vpg",
+  "version": "0.1.0",
+  "private": true,
+  "description": "映像演出図鑑 — Technique/Recipe/Reference/Intent データのスキーマ検証",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-data.mjs"
+  },
+  "packageManager": "pnpm@11.1.2",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "js-yaml": "^5.4.2"
+  }
+}

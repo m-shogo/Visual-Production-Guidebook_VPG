@@ -48,6 +48,18 @@
     "rights_note": {
       "type": "string",
       "description": "権利関係メモ（公式リンクか、埋め込み可否、リンク切れ時の扱い等）。design-v0.1 §10 の著作権方針に従う。"
+    },
+    "legal_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["pending", "approved", "rejected"] },
+        "reviewed_by": { "type": "string" },
+        "reviewed_at": { "type": "string", "format": "date" },
+        "note": { "type": "string" }
+      },
+      "description": "docs/monetization-and-licensing.md の方針に基づく法務確認記録。社内利用中は任意だが、社外顧客向けカタログに含める前に status=approved が必須になる。"
     }
   }
 }
