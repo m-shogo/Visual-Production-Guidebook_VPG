@@ -1,0 +1,14 @@
+id: text-fade
+name_ja: テキストフェード
+name_en: Text Fade
+categories:
+  - 10-typography
+one_liner: 文字を透明度アニメーションでゆっくり出現・消失させる
+fits_when: 静かなトーンで情報を追加したいとき、他の動きの後に間を置いて文字を見せたいとき
+avoid_when: 強い訴求力が必要なタイトルカット（Scale PunchやOvershootの方が適する）
+why_it_works: >
+  フェードは加速度を持たない等速に近い変化であるため、他の演出と比べて
+  「静けさ」「余韻」を壊さずに情報を追加できる。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

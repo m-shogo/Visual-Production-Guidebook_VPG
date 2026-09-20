@@ -1,0 +1,25 @@
+id: luxury
+label_ja: 高級感
+label_en: Luxury / Premium Feel
+description: >
+  質感・余白・動きの緩やかさによって「安っぽくない」印象を作る狙い。
+  単一の技法では成立せず、複数要素の組み合わせと「やらないこと」の両方が重要。
+related_techniques:
+  - technique_id: push-in
+    weight: 0.4
+    note: Slow Push限定。Fast Push/Crash Pushは逆に安っぽさや焦りを感じさせるため対象外。
+  - technique_id: rack-focus
+    weight: 0.3
+    note: ゆっくりしたピント送りは余裕・落ち着きの演出に寄与する。
+  - technique_id: slow-motion
+    weight: 0.5
+    note: >
+      未作成のTechnique（Time系, 08-time想定）への前方参照。Intentは実装済みの
+      Techniqueだけでなく計画中のTechniqueも先に紐づけてよい運用とする。
+  - technique_id: backlight
+    weight: 0.3
+    note: 未作成のTechnique（13-light-color想定）への前方参照。
+related_recipes: []
+anti_patterns:
+  - "Fast Push + 派手なトランジション + 過剰なグレイン → 高級感ではなく安っぽい演出になりやすい"
+  - "テンポの速いBeat Cut主体の編集は、高級感より躍動感・スピード感のIntentに寄せた方が自然"

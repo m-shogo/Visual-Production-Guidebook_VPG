@@ -1,0 +1,42 @@
+id: push-in
+name_ja: プッシュイン
+name_en: Push In
+synonyms:
+  - Slow Push
+  - Dolly In (近い概念だが物理的なドリーとは区別する)
+categories:
+  - 01-camera
+one_liner: 被写体へカメラがゆっくり近づく
+impression_tags:
+  - 集中
+  - 親密
+  - 緊張
+  - 気付き
+fits_when: 人物の感情へ入りたいとき
+avoid_when: テンポを止めたくない高速モンタージュ
+why_it_works: >
+  視野角が狭まり被写体以外の情報が相対的に減ることで、観客の注意が強制的に
+  被写体へ集約される。動きが緩やかであるほど「気づいたら近づいていた」という
+  無意識の没入感を生む。
+variants:
+  - name: Slow Push
+    description: 数秒かけてごくわずかに近づく。感情の機微を見せる場面向け。
+  - name: Fast Push
+    description: 短時間で大きく近づく。驚きや強調に使う。
+  - name: Micro Push
+    description: ほぼ気づかれない程度の微小な動き。静的なカットに生命感を足す。
+  - name: Crash Push
+    description: 急激なズームに近いPush In。衝撃・パニック表現向け。
+combination_technique_ids:
+  - rack-focus
+software_instructions:
+  davinci_resolve: Transform / Dynamic Zoom / Fusion Camera
+  after_effects: Scale / 3D Camera
+ai_prompt_fragment: slow cinematic push-in toward the subject
+demo:
+  source_type: unplanned
+  status: planned
+  notes: 自社スタジオでの3秒デモ撮影を想定。人物ポートレートでSlow Push/Fast Pushの2パターンを収録する。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

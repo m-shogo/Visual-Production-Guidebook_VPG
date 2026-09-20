@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpg.internal/schema/technique.schema.json",
+  "title": "Technique",
+  "description": "映像表現の最小単位。design-v0.1 §4A / §5 / §6 に対応。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name_ja",
+    "name_en",
+    "categories",
+    "one_liner",
+    "why_it_works",
+    "fits_when",
+    "avoid_when",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "kebab-case スラグ。例: push-in"
+    },
+    "name_ja": { "type": "string" },
+    "name_en": { "type": "string" },
+    "synonyms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "破綻防止ルール7: 同義語・英語名・日本語名を保持する"
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "01-camera", "02-shot", "03-lens-focus", "04-composition",
+          "05-subject-motion", "06-edit", "07-transition", "08-time",
+          "09-photo-motion", "10-typography", "11-motion-graphics",
+          "12-image-treatment", "13-light-color", "14-rhythm",
+          "15-visual-storytelling"
+        ]
+      },
+      "description": "破綻防止ルール8: 一つのTechniqueへ複数タグを許可する。単一階層に押し込めない。"
+    },
+    "one_liner": {
+      "type": "string",
+      "description": "一言説明。例: 被写体へカメラがゆっくり近づく"
+    },
+    "impression_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "この技法が与える印象の短語（例: 集中, 親密, 緊張）。Intentカタログとは別の軽量な語彙。"
+    },
+    "fits_when": { "type": "string", "description": "向いている場面" },
+    "avoid_when": { "type": "string", "description": "向いていない場面" },
+    "why_it_works": {
+      "type": "string",
+      "description": "破綻防止ルール9: なぜ効くかを必須項目にする"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "combination_technique_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "相性の良い他Techniqueのid。Recipeそのものではなく単純な組み合わせ例。"
+    },
+    "software_instructions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "davinci_resolve": { "type": "string" },
+        "after_effects": { "type": "string" },
+        "premiere_pro": { "type": "string" },
+        "other": { "type": "string" }
+      },
+      "description": "破綻防止ルール3: ソフトウェア名を分類軸にしない。あくまで各Techniqueに付随する実装メモ。"
+    },
+    "ai_prompt_fragment": {
+      "type": "string",
+      "description": "破綻防止ルール4: AI Promptを主役にしない。補助情報として保持するのみ。"
+    },
+    "demo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "status"],
+      "properties": {
+        "source_type": {
+          "enum": ["self-shot", "licensed", "ai-generated", "unplanned"]
+        },
+        "url": { "type": "string" },
+        "duration_sec": { "type": "number" },
+        "status": { "enum": ["planned", "in-progress", "done"] },
+        "notes": { "type": "string" }
+      },
+      "description": "破綻防止ルール6: 映画素材転載を正本にしない。自作/自分で撮影/ライセンス素材/AI生成のいずれか。"
+    },
+    "status": {
+      "enum": ["draft", "validated", "published"],
+      "description": "draft=未検証, validated=実務者フィードバック済み, published=公開可"
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

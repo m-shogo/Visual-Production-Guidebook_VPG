@@ -1,0 +1,14 @@
+id: film-grain
+name_ja: フィルムグレイン
+name_en: Film Grain
+categories:
+  - 12-image-treatment
+one_liner: 映像にフィルム由来のノイズ質感を重ねる
+fits_when: 過去・記憶・ノスタルジーを想起させたいとき
+avoid_when: クリーンでモダンな質感を保ちたい企業VPやプロダクト紹介
+why_it_works: >
+  デジタルネイティブの観客にとって、フィルム粒子ノイズは「過去の映像」との
+  視覚的な連想が強く、質感だけで時間軸を過去へずらす効果がある。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

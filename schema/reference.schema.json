@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpg.internal/schema/reference.schema.json",
+  "title": "Reference",
+  "description": "実際の映像例。design-v0.1 §4C / §10 に対応。公式ソースへのリンク＋該当時間のみを保持し、映像そのものは転載しない。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "source_type",
+    "url",
+    "why_it_works",
+    "rights_note"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": { "type": "string", "description": "作品名" },
+    "source_type": {
+      "enum": ["movie", "cm", "mv", "anime", "tv", "youtube", "self", "ai-generated"]
+    },
+    "url": {
+      "type": "string",
+      "description": "公式配信・公式トレイラー等へのリンク。転載GIF等は不可。"
+    },
+    "timestamp_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "start": { "type": "string", "description": "例: 01:13" },
+        "end": { "type": "string", "description": "例: 01:17" }
+      }
+    },
+    "technique_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "この参照で確認できるTechnique.id"
+    },
+    "recipe_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "why_it_works": { "type": "string", "description": "なぜ効いているのか" },
+    "reproduction_note": { "type": "string", "description": "再現するとしたらどうするか" },
+    "rights_note": {
+      "type": "string",
+      "description": "権利関係メモ（公式リンクか、埋め込み可否、リンク切れ時の扱い等）。design-v0.1 §10 の著作権方針に従う。"
+    }
+  }
+}

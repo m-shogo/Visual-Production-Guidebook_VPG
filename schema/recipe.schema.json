@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpg.internal/schema/recipe.schema.json",
+  "title": "Recipe",
+  "description": "複数Techniqueを組み合わせた演出。design-v0.1 §4B / §14 に対応。破綻防止ルール1: TechniqueとRecipeを混ぜない（別コレクションとして管理する）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name_ja",
+    "name_en",
+    "one_liner",
+    "why_it_works",
+    "steps",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "kebab-case スラグ。例: memory-reveal"
+    },
+    "name_ja": { "type": "string" },
+    "name_en": { "type": "string" },
+    "one_liner": { "type": "string" },
+    "why_it_works": { "type": "string" },
+    "steps": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Technique idの順序付き組み合わせ。Recipeの本体。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["order", "technique_id"],
+        "properties": {
+          "order": { "type": "integer", "minimum": 1 },
+          "technique_id": {
+            "type": "string",
+            "description": "参照先 Technique.id"
+          },
+          "params": {
+            "type": "string",
+            "description": "このステップ固有の調整メモ（例: 小節頭でCut, 2秒かけてFade）"
+          }
+        }
+      }
+    },
+    "software_instructions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "davinci_resolve": { "type": "string" },
+        "after_effects": { "type": "string" },
+        "premiere_pro": { "type": "string" },
+        "other": { "type": "string" }
+      }
+    },
+    "demo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "status"],
+      "properties": {
+        "source_type": { "enum": ["self-shot", "licensed", "ai-generated", "unplanned"] },
+        "url": { "type": "string" },
+        "duration_sec": { "type": "number" },
+        "status": { "enum": ["planned", "in-progress", "done"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "status": {
+      "enum": ["draft", "validated", "published"]
+    },
+    "created_at": { "type": "string", "format": "date" },
+    "updated_at": { "type": "string", "format": "date" }
+  }
+}

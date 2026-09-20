@@ -1,0 +1,30 @@
+id: rack-focus
+name_ja: ラックフォーカス
+name_en: Rack Focus
+synonyms:
+  - Focus Pull
+  - Pull Focus
+categories:
+  - 03-lens-focus
+one_liner: 手前と奥、どちらにピントを合わせるかを画面内で切り替える
+impression_tags:
+  - 気付き
+  - 視点誘導
+  - 意外性
+fits_when: 2つの被写体の関係性や優先順位を観客に順番で理解させたいとき
+avoid_when: 画面内の被写体が1つしかなく、切り替える対象が存在しない場合
+why_it_works: >
+  人間の目はピントの合った領域に自然と注意を向ける。ピント送りは「今どこを
+  見るべきか」を編集者が能動的にコントロールできる数少ない撮影内演出であり、
+  カットを割らずに視点誘導と情報の後出しができる。
+combination_technique_ids:
+  - push-in
+software_instructions:
+  davinci_resolve: Fusion内でのマスク＋ぼかしキーフレーム、またはブラー付きトランジション
+  after_effects: カメラのFocus Distance / Apertureパラメータのキーフレームアニメーション
+demo:
+  source_type: unplanned
+  status: planned
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

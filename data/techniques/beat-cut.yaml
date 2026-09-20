@@ -1,0 +1,14 @@
+id: beat-cut
+name_ja: ビートカット
+name_en: Beat Cut
+categories:
+  - 14-rhythm
+one_liner: 音楽の拍・小節頭にカット点を合わせる
+fits_when: 音楽主導の編集で映像のテンポ感を音と一致させたいとき
+avoid_when: 音楽のない、または台詞主導のシーン
+why_it_works: >
+  カット点と拍が一致すると、視覚と聴覚の刺激が同期し、観客は無意識に
+  「気持ちよさ」「テンポの良さ」を感じる。ズレると逆に違和感として認識される。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

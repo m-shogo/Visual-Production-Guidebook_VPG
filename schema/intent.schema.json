@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vpg.internal/schema/intent.schema.json",
+  "title": "Intent",
+  "description": "「何がしたいか」からTechnique/Recipeへ逆引きするための語彙。design-v0.1 §4D に対応。Intent→Techniqueは一対一にしない（related_techniquesは複数・重み付き）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "label_ja",
+    "label_en",
+    "description",
+    "related_techniques"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "label_ja": { "type": "string", "description": "例: 高級感" },
+    "label_en": { "type": "string" },
+    "description": { "type": "string" },
+    "related_techniques": {
+      "type": "array",
+      "minItems": 1,
+      "description": "単純な1:1マッピングを避けるため、複数Techniqueを重み付きで保持する。Intent側を正（single source of truth）とし、Technique側からの逆引きはビルド時に生成する。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["technique_id", "weight"],
+        "properties": {
+          "technique_id": { "type": "string" },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "この技法がこのIntentにどれだけ寄与するかの目安（0-1）"
+          },
+          "note": { "type": "string", "description": "なぜこのIntentに効くかの短い注記" }
+        }
+      }
+    },
+    "related_recipes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["recipe_id", "weight"],
+        "properties": {
+          "recipe_id": { "type": "string" },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1 },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "anti_patterns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "このIntentを狙う際にやりがちな失敗（例: 高級感のつもりが安っぽくなるケース）"
+    }
+  }
+}

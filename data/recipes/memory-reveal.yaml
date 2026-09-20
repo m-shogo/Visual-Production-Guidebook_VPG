@@ -1,0 +1,35 @@
+id: memory-reveal
+name_ja: メモリアルリベール
+name_en: Memory Reveal
+one_liner: 写真をゆっくり見せながら、質感と文字で「思い出」を演出する組み合わせ
+why_it_works: >
+  Push Inによる注意の集約、Parallaxによる立体感、Film Grainによる時間軸の
+  ずらし、Text Fadeによる静かな情報追加、Beat Cutによる音楽との同期——
+  それぞれ単体では弱い効果も、同時に重ねることで「思い出を見ている」という
+  一貫した体験を作る。design-v0.1 §4B のオリジナル例。
+steps:
+  - order: 1
+    technique_id: push-in
+    params: 写真全体を3〜4秒かけてゆっくりPush In
+  - order: 2
+    technique_id: parallax
+    params: Push Inと同時に背景レイヤーをわずかに逆方向へ動かす
+  - order: 3
+    technique_id: film-grain
+    params: 全編にわたって薄く重ねる（強度は素材の解像度に応じて調整）
+  - order: 4
+    technique_id: text-fade
+    params: Push Inが8割ほど進んだタイミングでテキストを遅らせてFade In
+  - order: 5
+    technique_id: beat-cut
+    params: 次のカットへは必ず音楽の小節頭で切り替える
+software_instructions:
+  davinci_resolve: Fusion上でPush In(Transform)・Parallax(2レイヤーのTransformオフセット)・Grain(Film Damage)・Text+(Fade)を1つのタイムラインでレイヤー合成し、Cutポイントのみ音楽トラックのマーカーに吸着させる。
+  after_effects: 写真を2〜3レイヤーに分離しParallax用に配置、Camera 1つでPush Inを制御、Grainは調整レイヤーで一括適用。
+demo:
+  source_type: unplanned
+  status: planned
+  notes: 結婚式・企業周年イベント向けのサンプル素材で1本制作予定。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"

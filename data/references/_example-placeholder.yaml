@@ -1,0 +1,18 @@
+# このファイルはReferenceスキーマの記入例（プレースホルダ）です。
+# 実在の作品を引用する際は、公式配信・公式トレイラーの実URLと正確なタイムスタンプに
+# 差し替えること。未確認の引用を実データとしてコミットしない。
+id: example-placeholder-001
+title: "（要差し替え）作品名を記入"
+source_type: youtube
+url: "https://example.com/TODO-replace-with-official-source"
+timestamp_range:
+  start: "00:00"
+  end: "00:00"
+technique_ids:
+  - push-in
+recipe_ids: []
+why_it_works: "（要記入）このReferenceでなぜその技法が効いているかを記述する"
+reproduction_note: "（要記入）自分の素材で再現する場合の具体的な手順"
+rights_note: >
+  公式チャンネル/公式配信へのリンクのみを使用すること。埋め込み・GIF化・
+  転載は行わない。リンク切れ確認は定期チェック対象とする（design-v0.1 §10）。

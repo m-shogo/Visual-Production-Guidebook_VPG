@@ -1,0 +1,14 @@
+id: parallax
+name_ja: パララックス
+name_en: Parallax
+categories:
+  - 09-photo-motion
+one_liner: 写真を前景・中景・背景に分離し、レイヤーごとに異なる速度で動かして奥行きを出す
+fits_when: 静止画に立体感・空気感を持たせたいとき（メモリアル映像、写真スライドショー）
+avoid_when: 被写体が単一レイヤーで分離が難しい写真、またはテンポの速いモンタージュ
+why_it_works: >
+  レイヤー間の移動速度差が視差（実際のカメラの奥行き知覚と同じ原理）を
+  シミュレートし、静止画であっても脳が「奥行きのある空間」として処理する。
+status: draft
+created_at: "2026-09-20"
+updated_at: "2026-09-20"
