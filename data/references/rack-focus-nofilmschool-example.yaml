@@ -1,0 +1,22 @@
+# 2026-09-21 のfindability spike testでWeb検索から見つけた候補。
+# 私(Claude)は動画本編を視聴していないため、該当タイムスタンプ・映像の正確な内容は未確認。
+# 実際に人間が視聴して確認してから、why_it_works / reproduction_note / timestamp_range を差し替えること。
+id: rack-focus-nofilmschool-example
+title: "The Rack Focus Shot: Practical Uses and Visual Examples（nofilmschool）"
+source_type: youtube
+channel_type: third_party_education
+url: "https://www.youtube.com/watch?v=I-N_7QXA6xE"
+technique_ids:
+  - rack-focus
+recipe_ids: []
+why_it_works: >
+  （要確認：Web検索のタイトル・要約から「Rack Focusの実例解説動画」と推測されるが、
+  実際に視聴して内容を確認していない。視聴後にこの説明を実際の内容に差し替えること）
+reproduction_note: "（要確認：視聴後に記入）"
+rights_note: >
+  third_party_education（nofilmschool、映像教育系メディア）のオリジナル解説動画で、
+  権利者本人の公式チャンネルではない。埋め込みが許可されているか、内容が
+  他作品の無断転載を含んでいないかを視聴時に確認すること。
+legal_review:
+  status: pending
+  note: findability spike testで発見した未検証候補。人間によるレビュー前提。

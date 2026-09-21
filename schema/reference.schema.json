@@ -18,13 +18,21 @@
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
-    "title": { "type": "string", "description": "作品名" },
+    "title": { "type": "string", "description": "作品名、またはその動画を投稿しているチャンネル名" },
     "source_type": {
       "enum": ["movie", "cm", "mv", "anime", "tv", "youtube", "self", "ai-generated"]
     },
+    "channel_type": {
+      "enum": ["official_rights_holder", "third_party_education", "self"],
+      "description": "docs/content-sourcing-v0.2.md 参照。official_rights_holder=権利者本人の公式チャンネル、third_party_education=StudioBinder等の映像教育系チャンネル（権利者ではないが分析・批評目的の正規コンテンツ）、self=自社。法務レビューの優先度判断に使う。"
+    },
     "url": {
       "type": "string",
-      "description": "公式配信・公式トレイラー等へのリンク。転載GIF等は不可。"
+      "description": "YouTube公式埋め込みプレーヤー等、配信元プラットフォームが公式に提供する埋め込み/リンク機構を使うこと。動画ファイルを自前でダウンロード・再ホスト・GIF化することは、権利者の公式チャンネルであっても行わない。"
+    },
+    "embeddable": {
+      "type": "boolean",
+      "description": "投稿者が埋め込みを許可しているか。falseの場合はサムネイル+外部リンクのみで表示する。"
     },
     "timestamp_range": {
       "type": "object",

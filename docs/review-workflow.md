@@ -20,8 +20,9 @@
 3. レビュアーは以下を確認する。
    - `why_it_works` の説明が実務的に妥当か
    - `fits_when` / `avoid_when` が現場感覚とズレていないか
-   - `software_instructions` が実際に動作するか（DaVinci/AE等で試す）
-4. レビュー結果を `reviews` 配列に追記する。
+   - `software_instructions` が実際に動作するか（確認できたら`instructions_verified: true`にする）
+   - デモ/Referenceの映像を**説明を読む前に**見て、用途が伝わるか
+4. レビュー結果を `reviews` 配列に追記する。構造化質問（`recognized_without_reading` / `would_use_in_practice`）は[roadmap-v0.2.md](./roadmap-v0.2.md) Phase Bの検証に使うため、できるだけ埋める。
 
 ```yaml
 reviews:
@@ -29,16 +30,22 @@ reviews:
     reviewer_org: "（社内 or 取引先の会社名）"
     date: "2026-09-20"
     verdict: approve   # または request-changes
+    recognized_without_reading: true   # 説明を読む前に、見ただけで用途が分かったか
+    would_use_in_practice: true        # 実務で本当に参照しそうか
     comment: "（任意コメント）"
 ```
 
 5. `verdict: approve` が1件以上ついた時点で `status: validated` に変更できる（スキーマがそれ以前の変更を拒否する）。
 6. `published` への格上げ判断（社外への公開可否）は別途、後述の [monetization-and-licensing.md](./monetization-and-licensing.md) の法務確認プロセスと連動する。
 
+## 暫定デフォルト（2026-09-21）
+
+パイロット運用のために、一旦の基準を決めておく。実際にレビューを回してみて、違和感があれば見直す。
+
+- **レビュアー最低人数**：1件のapproveでvalidatedに上げてよい。合議制は導入しない（意思決定を遅くするコストの方が今は大きい）
+- **request-changesがついた場合**：修正して同じレビュアーに再提出する。同じエントリで2回連続request-changesがついたら、別のレビュアーにも見てもらう
+- **見直しのタイミング**：レビューを20件回すか、3ヶ月経過したら、この基準自体を見直す
+
 ## 未決事項
 
-- レビュアーの最低人数・resolve条件（1件approveで十分か、複数人の合議が必要か）
-- `request-changes` がついた場合の再レビュー手順
-- レビュアー候補者リスト（取引先の具体名）
-
-これらは実際にレビューを回してみてから固める（運用しながら決める、という判断）。
+- レビュアー候補者リスト（取引先の具体名）— これは実際の関係者名が必要なため、ユーザー自身が記入する

@@ -10,6 +10,9 @@
 - [taxonomy-v0.2.md](docs/taxonomy-v0.2.md) — 15カテゴリの軸の整理とTechnique/Recipe誤分類の防止ルール
 - [review-workflow.md](docs/review-workflow.md) — draft→validatedのレビュー運用
 - [monetization-and-licensing.md](docs/monetization-and-licensing.md) — マネタイズ方針とライセンス・法務確認フロー
+- [content-sourcing-v0.2.md](docs/content-sourcing-v0.2.md) — Demoの外部Reference化、公式埋め込みルール、findability spike testの結果
+- [discovery-ux-v0.1.md](docs/discovery-ux-v0.1.md) — 初心者向けトリアージ動線とチャット併用の可否
+- [roadmap-v0.2.md](docs/roadmap-v0.2.md) — Phase A〜Eのロードマップ（6つの穴を潰した版）
 - [decisions-log.md](docs/decisions-log.md) — 意思決定の一覧
 
 ## リポジトリ構成
@@ -18,18 +21,20 @@
 schema/   JSON Schema（4エンティティの型定義）
 data/     YAML実データ（techniques / recipes / references / intents）
 docs/     設計メモ・レビュー・意思決定ログ
-scripts/  データ検証スクリプト
+scripts/  データ検証・ギャラリー生成スクリプト
+dist/     生成物（gitignore対象）
 ```
 
-## データ検証
+## データ検証・ギャラリー生成
 
 ```bash
 pnpm install
-pnpm run validate
+pnpm run validate   # data/ が schema/ に準拠しているか検証
+pnpm run gallery     # data/ から dist/index.html を生成（Phase A2の最小ブラウジングUI）
 ```
 
-`data/` 配下のYAMLが `schema/` のJSON Schemaに準拠しているかを検証する。GitHub ActionsでもPR時に自動実行される（`.github/workflows/validate-data.yml`）。
+`pnpm run validate` はGitHub ActionsでもPR時に自動実行される（`.github/workflows/validate-data.yml`）。`pnpm run gallery` はYouTube公式サムネイルを使った最小限のギャラリーページを生成する（`dist/index.html`をブラウザで開く）。
 
 ## ステータス
 
-構想・議論フェーズ。ターゲットは映像制作会社・プロ向けツールに決定済み。データ構造（スキーマ）とレビュー運用・分類軸・マネタイズ方針の設計まで完了、実装未着手。
+構想・議論フェーズ。ターゲットは映像制作会社・プロ向けツールに決定済み。データ構造（スキーマ）、レビュー運用、分類軸、マネタイズ方針、コンテンツ調達方針（外部Reference中心）、発見体験（トリアージ＋軽量検索）の設計が完了。最小ブラウジングUIのプロトタイプも動作確認済み。実装（本番Webアプリ）は未着手。

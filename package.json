@@ -5,7 +5,8 @@
   "description": "映像演出図鑑 — Technique/Recipe/Reference/Intent データのスキーマ検証",
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate-data.mjs"
+    "validate": "node scripts/validate-data.mjs",
+    "gallery": "node scripts/build-gallery.mjs"
   },
   "packageManager": "pnpm@11.1.2",
   "license": "UNLICENSED",

@@ -86,6 +86,10 @@
       },
       "description": "破綻防止ルール3: ソフトウェア名を分類軸にしない。あくまで各Techniqueに付随する実装メモ。"
     },
+    "instructions_verified": {
+      "type": "boolean",
+      "description": "software_instructions/ai_prompt_fragmentが、実際にその手順で実行して同じ結果が出ることを確認済みか。demoがreferences経由(実写引用)の場合、その実写を再現する手順として検証されたわけではないので、確認するまでfalseまたは未設定のままにする。"
+    },
     "ai_prompt_fragment": {
       "type": "string",
       "description": "破綻防止ルール4: AI Promptを主役にしない。補助情報として保持するのみ。"
@@ -123,6 +127,14 @@
           },
           "date": { "type": "string", "format": "date" },
           "verdict": { "enum": ["approve", "request-changes"] },
+          "recognized_without_reading": {
+            "type": "boolean",
+            "description": "説明文を読む前に、映像/画像だけを見て用途が伝わったか"
+          },
+          "would_use_in_practice": {
+            "type": "boolean",
+            "description": "実務で本当にこのエントリを参照しそうか"
+          },
           "comment": { "type": "string" }
         }
       },
